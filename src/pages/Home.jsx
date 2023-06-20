@@ -1,9 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
+import Popup_Rules from '../components/Popup_Rules'
 
 const Home = () => {
+
+  const [rules, setRules] = useState(true)
+
+
   return (
-    <section className='w-screen h-screen flex justify-center items-center bg-[#d6e0ed]'>
-      <div className='w-full mx-4 md:w-80 p-4 pb-10 flex flex-col gap-6 justify-center items-center bg-white shadow-xl rounded-xl'></div>
+    <section className='w-screen h-screen flex justify-center items-center bg-gradient-radial-to-tm from-[#2c3c59] to-[#1d203d] font-Barlow'>
+      {rules && <Popup_Rules onClick={()=>setRules(false)} />}
     </section>
   )
 }
