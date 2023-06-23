@@ -31,49 +31,42 @@ const Home = () => {
 
   function handleClick(choice) {
     setUser(choice);
+    setPage(2);
     setTimeout(() => {
-      setPage(2)
-      GenerateRandomNumber()
+      GenerateRandomNumber();
+      handleResult(); // Call handleResult here
     }, 1000);
-    // handleResult();
   }
 
 
-  //console.log(computer);
   function handleResult() {
     if (user === computer) {
       setResult("DRAW");
-      console.log("Case 1");
     } else if (user === 0 && computer === 1) {
       setResult("YOU LOSE");
-      console.log("Case 2");
       setScore((current) => current - 1);
     } else if (user === 0 && computer === 2) {
       setResult("YOU WIN");
-      console.log("Case 3");
       setScore((current) => current + 1);
     } else if (user === 1 && computer === 0) {
       setResult("YOU WIN");
-      console.log("Case 4");
       setScore((current) => current + 1);
     } else if (user === 1 && computer === 2) {
       setResult("YOU LOSE");
-      console.log("Case 5");
       setScore((current) => current - 1);
     } else if (user === 2 && computer === 0) {
       setResult("YOU LOSE");
-      console.log("Case 6");
       setScore((current) => current - 1);
     } else if (user === 2 && computer === 1) {
       setResult("YOU WIN");
-      console.log("Case 7");
       setScore((current) => current + 1);
     } else {
-      console.log('Case 8: Error');
+      console.log('Error: Invalid user or computer choice');
     }
   }
 
-  console.log("Page:", page, " User:", user, " Computer:", computer, " Result:", result);
+
+  console.log("Page:", page, " User:", user, " Computer:", computer, " Result:", result, " Score", score);
 
 
 
@@ -93,11 +86,11 @@ const Home = () => {
           />
         )}
 
-        {
+        {/* {
           page === 1 && <Decision
             userChoice={user === 0 ? <Rock /> : user === 1 ? <Paper /> : <Scissors />}
           />
-        }
+        } */}
 
         {
           page === 2 && <Result
