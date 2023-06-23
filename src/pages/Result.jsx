@@ -23,9 +23,9 @@ const Result = ({ userChoice, computerChoice, result, onClick }) => {
             }
             <div className='flex flex-col gap-32 items-center'>
                 <h3 className='text-2xl'>THE HOUSE PICKED</h3>
-                {show &&
-                    <div className='min-w-[120px] min-h-[120px] rounded-full bg-blue-900/30 scale-[2]'>{computerChoice}</div>
-                }
+
+                <div className='min-w-[120px] min-h-[120px] rounded-full bg-blue-900/30 scale-[2]'>{show && computerChoice}</div>
+
             </div>
         </div>
     )
