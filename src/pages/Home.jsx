@@ -17,29 +17,44 @@ const Home = () => {
   const [user, setUser] = useState(null)
   const [computer, setComputer] = useState(-1)
   const [page, setPage] = useState(0)
+  const [render, setRender] = useState(false)
 
   //console.log(user);
+  useEffect(() => {
+    if (render === true) {
+      handleResult()
+      setRender(false)      
+    }
+  }, [render])
+
+
+  console.log("1 Page:", page, " User:", user, " Computer:", computer, " Result:", result, " Score:", score);
 
   function GenerateRandomNumber() {
     const randomNumber = Math.round(Math.random() * 2);
     setComputer(randomNumber)
   }
-
-  // useEffect(() => {
-  //   
-  // }, [page])
+  console.log("2 Page:", page, " User:", user, " Computer:", computer, " Result:", result, " Score:", score);
 
   function handleClick(choice) {
-    setUser(choice);
+    setUser(choice)
     setPage(2);
+    GenerateRandomNumber();
+    console.log("5 Page:", page, " User:", user, " Computer:", computer, " Result:", result, " Score:", score);
     setTimeout(() => {
-      GenerateRandomNumber();
-      handleResult(); // Call handleResult here
+      handleResult();
+      console.log("6 Page:", page, " User:", user, " Computer:", computer, " Result:", result, " Score:", score);
     }, 1000);
+
+    setTimeout(() => {
+      setRender(true)
+    }, 500);
   }
 
+  console.log("3 Page:", page, " User:", user, " Computer:", computer, " Result:", result, " Score:", score);
 
   function handleResult() {
+    console.log("7 Page:", page, " User:", user, " Computer:", computer, " Result:", result, " Score:", score);
     if (user === computer) {
       setResult("DRAW");
     } else if (user === 0 && computer === 1) {
@@ -66,7 +81,9 @@ const Home = () => {
   }
 
 
-  console.log("Page:", page, " User:", user, " Computer:", computer, " Result:", result, " Score", score);
+
+
+  console.log("4 Page:", page, " User:", user, " Computer:", computer, " Result:", result, " Score:", score);
 
 
 
