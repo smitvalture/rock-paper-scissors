@@ -54,13 +54,13 @@ const Home = () => {
   function scoreInc() {
     setTimeout(() => {
       setScore((current) => current + 1);
-    }, 2000);
+    }, 1000);
   }
 
   function scoreDec() {
     setTimeout(() => {
       setScore((current) => current - 1);
-    }, 2000);
+    }, 1000);
   }
 
   // console.log("3 Page:", page, " User:", user, " Computer:", computer, " Result:", result, " Score:", score);
