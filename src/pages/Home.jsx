@@ -3,7 +3,6 @@ import Popup_Rules from '../components/Popup_Rules'
 import ScoreNav from '../components/ScoreNav'
 import Footer from '../components/Footer'
 import UserChoice from './UserChoice'
-import Decision from './Decision'
 import Rock from '../components/Rock'
 import Paper from '../components/Paper'
 import Scissors from '../components/Scissors'
@@ -18,12 +17,13 @@ const Home = () => {
   const [computer, setComputer] = useState(-1)
   const [page, setPage] = useState(0)
   const [render, setRender] = useState(false)
+  const [winner, setWinner] = useState("")
 
   //console.log(user);
   useEffect(() => {
     if (render === true) {
       handleResult()
-      setRender(false)      
+      setRender(false)
     }
   }, [render])
 
@@ -51,6 +51,18 @@ const Home = () => {
     }, 500);
   }
 
+  function scoreInc() {
+    setTimeout(() => {
+      setScore((current) => current + 1);
+    }, 2000);
+  }
+
+  function scoreDec() {
+    setTimeout(() => {
+      setScore((current) => current - 1);
+    }, 2000);
+  }
+
   console.log("3 Page:", page, " User:", user, " Computer:", computer, " Result:", result, " Score:", score);
 
   function handleResult() {
@@ -59,31 +71,36 @@ const Home = () => {
       setResult("DRAW");
     } else if (user === 0 && computer === 1) {
       setResult("YOU LOSE");
-      setScore((current) => current - 1);
+      scoreDec()
     } else if (user === 0 && computer === 2) {
       setResult("YOU WIN");
-      setScore((current) => current + 1);
+      scoreInc()
     } else if (user === 1 && computer === 0) {
       setResult("YOU WIN");
-      setScore((current) => current + 1);
+      scoreInc()
     } else if (user === 1 && computer === 2) {
       setResult("YOU LOSE");
-      setScore((current) => current - 1);
+      scoreDec()
     } else if (user === 2 && computer === 0) {
       setResult("YOU LOSE");
-      setScore((current) => current - 1);
+      scoreDec()
     } else if (user === 2 && computer === 1) {
       setResult("YOU WIN");
-      setScore((current) => current + 1);
+      scoreInc()
     } else {
       console.log('Error: Invalid user or computer choice');
     }
+
   }
 
 
 
 
+
+
   console.log("4 Page:", page, " User:", user, " Computer:", computer, " Result:", result, " Score:", score);
+
+  console.log(winner);
 
 
 
@@ -103,16 +120,13 @@ const Home = () => {
           />
         )}
 
-        {/* {
-          page === 1 && <Decision
-            userChoice={user === 0 ? <Rock /> : user === 1 ? <Paper /> : <Scissors />}
-          />
-        } */}
 
         {
           page === 2 && <Result
             result={result}
-            onClick={() => { setPage(0); setUser(null); setComputer(-1) }}
+            userWinner={(result === "YOU WIN") ? "shadow-3xl shadow-white/20" : ""}
+            computerWinner={(result === "YOU LOSE") ? "shadow-3xl shadow-white/20" : ""}
+            onClick={() => { setPage(0); setUser(null); setComputer(-1); setResult("") }}
             userChoice={user === 0 ? <Rock /> : user === 1 ? <Paper /> : user === 2 ? <Scissors /> : user === 0 || user === 1 || user === 2 ? null : null}
             computerChoice={computer === 0 ? <Rock /> : computer === 1 ? <Paper /> : computer === 2 ? <Scissors /> : user === 0 || user === 1 || user === 2 ? null : null}
           />
