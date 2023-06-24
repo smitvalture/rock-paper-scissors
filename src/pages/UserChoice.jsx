@@ -5,7 +5,7 @@ import rockIcon from '../assets/images/icon-rock.svg'
 
 const UserChoice = ({paperClick, scissorsClick, rockClick }) => {
     return (
-        <div className='relative flex flex-col justify-center items-center'>
+        <div className='relative flex flex-col justify-center items-center scale-75 md:scale-100'>
 
             <div className='absolute top-[45px] w-72 h-3 bg-black/25'></div>
             <div className='absolute top-[160px] -left-10 rotate-[60deg] w-72 h-3 bg-black/25'></div>

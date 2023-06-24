@@ -19,7 +19,7 @@ const Home = () => {
   const [render, setRender] = useState(false)
   const [winner, setWinner] = useState("")
 
-  //console.log(user);
+  // console.log(user);
   useEffect(() => {
     if (render === true) {
       handleResult()
@@ -28,22 +28,22 @@ const Home = () => {
   }, [render])
 
 
-  console.log("1 Page:", page, " User:", user, " Computer:", computer, " Result:", result, " Score:", score);
+  // console.log("1 Page:", page, " User:", user, " Computer:", computer, " Result:", result, " Score:", score);
 
   function GenerateRandomNumber() {
     const randomNumber = Math.round(Math.random() * 2);
     setComputer(randomNumber)
   }
-  console.log("2 Page:", page, " User:", user, " Computer:", computer, " Result:", result, " Score:", score);
+  // console.log("2 Page:", page, " User:", user, " Computer:", computer, " Result:", result, " Score:", score);
 
   function handleClick(choice) {
     setUser(choice)
     setPage(2);
     GenerateRandomNumber();
-    console.log("5 Page:", page, " User:", user, " Computer:", computer, " Result:", result, " Score:", score);
+    // console.log("5 Page:", page, " User:", user, " Computer:", computer, " Result:", result, " Score:", score);
     setTimeout(() => {
       handleResult();
-      console.log("6 Page:", page, " User:", user, " Computer:", computer, " Result:", result, " Score:", score);
+      // console.log("6 Page:", page, " User:", user, " Computer:", computer, " Result:", result, " Score:", score);
     }, 1000);
 
     setTimeout(() => {
@@ -63,10 +63,10 @@ const Home = () => {
     }, 2000);
   }
 
-  console.log("3 Page:", page, " User:", user, " Computer:", computer, " Result:", result, " Score:", score);
+  // console.log("3 Page:", page, " User:", user, " Computer:", computer, " Result:", result, " Score:", score);
 
   function handleResult() {
-    console.log("7 Page:", page, " User:", user, " Computer:", computer, " Result:", result, " Score:", score);
+    // console.log("7 Page:", page, " User:", user, " Computer:", computer, " Result:", result, " Score:", score);
     if (user === computer) {
       setResult("DRAW");
     } else if (user === 0 && computer === 1) {
@@ -88,7 +88,7 @@ const Home = () => {
       setResult("YOU WIN");
       scoreInc()
     } else {
-      console.log('Error: Invalid user or computer choice');
+      // console.log('Error: Invalid user or computer choice');
     }
 
   }
@@ -98,14 +98,14 @@ const Home = () => {
 
 
 
-  console.log("4 Page:", page, " User:", user, " Computer:", computer, " Result:", result, " Score:", score);
+  // console.log("4 Page:", page, " User:", user, " Computer:", computer, " Result:", result, " Score:", score);
 
-  console.log(winner);
+  // console.log(winner);
 
 
 
   return (
-    <section className='w-screen h-screen flex flex-col items-center bg-gradient-radial-to-tm from-[#2c3c59] to-[#171931] font-Barlow'>
+    <section className='min-w-full min-h-screen h-full flex flex-col justify-between items-center bg-gradient-radial-to-tm from-[#2c3c59] to-[#171931] font-Barlow'>
       {rules && <Popup_Rules onClick={() => setRules(false)} />}
 
       <ScoreNav score={score} />
