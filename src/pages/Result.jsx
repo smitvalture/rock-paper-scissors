@@ -21,8 +21,8 @@ const Result = ({ userChoice, computerChoice, result, onClick, userWinner, compu
 
             {show &&
                 <div className='order-3 md:order-2 col-span-2 flex flex-col gap-5 lg:mt-24 justify-center items-center'>
-                    <h3 className='text-5xl'>{result}</h3>
-                    <button type='button' onClick={onClick} className='py-2 px-14 tracking-widest rounded-lg bg-white duration-300 font-bold text-blue-900 hover:text-red-800'>PLAY AGAIN</button>
+                    <h3 className='text-6xl'>{result}</h3>
+                    <button type='button' onClick={onClick} className='py-2 px-14 tracking-widest rounded-lg bg-white duration-300 text-lg font-bold text-blue-900 hover:text-red-800'>PLAY AGAIN</button>
                 </div>
             }
             <div className='order-2 md:order-3 flex flex-col h-full md:gap-6 lg:gap-24 justify-between items-center'>
